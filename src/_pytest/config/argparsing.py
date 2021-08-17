@@ -14,6 +14,7 @@ from typing import Sequence
 from typing import Tuple
 from typing import TYPE_CHECKING
 from typing import Union
+import shtab
 
 import _pytest._io
 from _pytest.compat import final
@@ -117,6 +118,7 @@ class Parser:
         from _pytest._argcomplete import filescompleter
 
         optparser = MyOptionParser(self, self.extra_info, prog=self.prog)
+        shtab.add_argument_to(optparser, ["--print-completion"])  
         groups = self._groups + [self._anonymous]
         for group in groups:
             if group.options:
